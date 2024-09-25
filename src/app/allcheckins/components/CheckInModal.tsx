@@ -32,13 +32,13 @@ export default function CheckInModal({
     title: "",
   });
   const fileUploadRef = React.useRef<HTMLInputElement | null>(null);
-    const [fileUpload, setFileUpload] = React.useState<File | null>(null);
-    const [loading,setLoading]=React.useState(false)
-    const handleClose = () => setOpen(false);
+  const [fileUpload, setFileUpload] = React.useState<File | null>(null);
+  const [loading, setLoading] = React.useState(false);
+  const handleClose = () => setOpen(false);
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
-        const selectedFile = event.target.files[0];
-        
+      const selectedFile = event.target.files[0];
+
       setFileUpload(selectedFile);
     }
   };
@@ -51,17 +51,17 @@ export default function CheckInModal({
     }
   };
   const createProject = async () => {
-      if (formData.title.trim()==="" ) {
-          alert("title required")
-          return;
-      }
+    if (formData.title.trim() === "") {
+      alert("title required");
+      return;
+    }
 
-      if (!fileUpload) {
-          alert("image is required")
-          return;
-      }
-      try {
-    setLoading(true)
+    if (!fileUpload) {
+      alert("image is required");
+      return;
+    }
+    try {
+      setLoading(true);
       const url = await handleUploadFile();
       if (url) {
         const collectionRef = collection(db, "/users");
@@ -74,9 +74,9 @@ export default function CheckInModal({
         };
         await addDoc(collectionRef, dataToCreate);
         console.log("Document successfully created!");
-          setLoading(false)
-          setFormData({ title: "" })
-          setFileUpload(null)
+        setLoading(false);
+        setFormData({ title: "" });
+        setFileUpload(null);
         handleClose();
       }
     } catch (error) {
@@ -96,16 +96,16 @@ export default function CheckInModal({
           <div className="flex justify-between items-center bg-gray-100 py-4 px-5 rounded-t-xl">
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Add Check In
-                      </Typography>
-                          <CloseOutlinedIcon onClick={()=>setOpen(false) } />
+            </Typography>
+            <CloseOutlinedIcon onClick={() => setOpen(false)} />
           </div>
           <div className="py-4 px-5">
             <div className="flex gap-3.5 flex-col">
               <Typography id="modal-modal-title" variant="h6" component="label">
                 Title
               </Typography>
-                          <Input
-                              required={true}
+              <Input
+                required={true}
                 className="border outline-none w-full shadow-shadow2 py-2.5 px-3 before:content-none after:content-none rounded-lg
                       border-primaryGray2 border-solid 
                       "
@@ -121,7 +121,13 @@ export default function CheckInModal({
                 Upload Image
               </Typography>
               {fileUpload ? (
-              <Image src={fileUpload ? URL.createObjectURL(fileUpload) : ''} alt="Preview" width={0} height={167}  className="h-[167px] object-contain w-full rounded-md"/>
+                <Image
+                  src={fileUpload ? URL.createObjectURL(fileUpload) : ""}
+                  alt="Preview"
+                  width={0}
+                  height={167}
+                  className="h-[167px] object-contain w-full rounded-md"
+                />
               ) : (
                 <div
                   onClick={() => {
@@ -164,26 +170,20 @@ export default function CheckInModal({
               )}
             </div>
             <div className="flex gap-2 items-center mt-10 justify-end">
-                          <Button
-                              disabled={loading}
-                variant="outlined"
+              <button
+                disabled={loading}
                 className="border-neutral-300 bg-transparent text-black rounded-full capitalize"
                 onClick={handleClose}
               >
                 Cancel
-              </Button>
-              <Button
-                              variant="contained"
-                              disabled={loading}
+              </button>
+              <button
+                disabled={loading}
                 className="border-neutral-300 bg-primaryPurple text-white rounded-full capitalize"
                 onClick={createProject}
-                          >
-                              Add  {loading && "...."}
-                              
-                             
-                             
-                
-              </Button>
+              >
+                Add {loading && "...."}
+              </button>
             </div>
           </div>
         </Box>

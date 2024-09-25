@@ -4,21 +4,20 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import CalendarMonthOutlinedIcon from "@mui/icons-material/CalendarMonthOutlined";
 import { CardMedia } from "@mui/material";
-
 
 export default function DetailModal({
   open,
   setOpen,
-  image
+  image,
 }: {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  image:string
+  image: string;
 }) {
   const handleClose = () => setOpen(false);
-  
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -44,47 +43,45 @@ export default function DetailModal({
             </Typography>
             <CloseOutlinedIcon />
           </div>
-                  <div className="py-14 ps-12 px-8">
-                      <div className="flex justify-between w-full">           
-                      <div className="flex-1 flex flex-col gap-8">
-                          <div className="flex w-full justify-between">
-                              <h2>
-                             Booking ID
-                              </h2>
-                             <p className="border px-3 flex justify-start items-center w-32 rounded-sm">12345678</p>
-                              </div>
-                              <div className="flex w-full justify-between">
-                              <h2>
-                              Rooms
-                                  </h2>
-                                  <p className="border  w-8 h-8 px-3 py-1.5 flex justify-center items-center">8</p>
-                              </div>
-                              <div className="flex w-full justify-between">
-                              <h2>
-                              Number of Guest
-                              </h2>
-                              <p className="border  w-8 h-8 px-3 py-1.5 flex justify-center items-center">4</p>
-                              </div>
-                              <div className="flex w-full justify-between">
-                              <h2>
-                              Booked Date
-                                  </h2>
-                                  <p className="border   h-8 px-3  flex justify-between items-center gap-3">
-                                      <span>12-03-20234</span>
-                                      <CalendarMonthOutlinedIcon style={{color:"gray"}}/>
-                                  </p>
-                              </div>
-                      </div>
-                          <div className="flex-1 flex justify-end items-center">
-                          <CardMedia
-                        className="rounded-xl "
-                        sx={{ height: 160, width: 270 }}
-                        image={image}
-                        title="green iguana"
-                    />
-                          </div>       
-                 </div>
-                          
+          <div className="py-14 ps-12 px-8">
+            <div className="flex justify-between w-full">
+              <div className="flex-1 flex flex-col gap-8">
+                <div className="flex w-full justify-between">
+                  <h2>Booking ID</h2>
+                  <p className="border px-3 flex justify-start items-center w-32 rounded-sm">
+                    12345678
+                  </p>
+                </div>
+                <div className="flex w-full justify-between">
+                  <h2>Rooms</h2>
+                  <p className="border  w-8 h-8 px-3 py-1.5 flex justify-center items-center">
+                    8
+                  </p>
+                </div>
+                <div className="flex w-full justify-between">
+                  <h2>Number of Guest</h2>
+                  <p className="border  w-8 h-8 px-3 py-1.5 flex justify-center items-center">
+                    4
+                  </p>
+                </div>
+                <div className="flex w-full justify-between">
+                  <h2>Booked Date</h2>
+                  <p className="border   h-8 px-3  flex justify-between items-center gap-3">
+                    <span>12-03-20234</span>
+                    <CalendarMonthOutlinedIcon style={{ color: "gray" }} />
+                  </p>
+                </div>
+              </div>
+              <div className="flex-1 flex justify-end items-center">
+                <CardMedia
+                  className="rounded-xl "
+                  sx={{ height: 160, width: 270 }}
+                  image={image}
+                  title="green iguana"
+                />
+              </div>
+            </div>
+
             <div className="flex gap-2 items-center mt-10 justify-end">
               <Button
                 variant="outlined"
