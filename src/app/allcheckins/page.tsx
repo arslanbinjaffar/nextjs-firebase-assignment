@@ -35,7 +35,7 @@ const AllCheckins = () => {
             }
         } 
         getData()
-    }, [collectionRef])
+    }, [])
     return (
       <>
       <div className='pt-5 px-11'>
