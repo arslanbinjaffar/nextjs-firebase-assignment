@@ -5,24 +5,13 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import Input from "@mui/material/Input";
-import { styled } from "@mui/material/styles";
 import Image from "next/image";
 import db, { uploadImage } from "@/app/firebase/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 import { v4 } from "uuid";
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
+
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -44,8 +33,8 @@ export default function CheckInModal({
   });
   const fileUploadRef = React.useRef<HTMLInputElement | null>(null);
     const [fileUpload, setFileUpload] = React.useState<File | null>(null);
-    const [loading,setLoading]=React.useState<any>()
-  const handleClose = () => setOpen(false);
+    const [loading,setLoading]=React.useState(false)
+    const handleClose = () => setOpen(false);
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
         const selectedFile = event.target.files[0];
@@ -55,7 +44,7 @@ export default function CheckInModal({
   };
   const handleUploadFile = async () => {
     try {
-      const url = await uploadImage(fileUpload);
+      const url = await uploadImage(fileUpload as File);
       return url;
     } catch (error) {
       return error;
@@ -132,7 +121,7 @@ export default function CheckInModal({
                 Upload Image
               </Typography>
               {fileUpload ? (
-              <img src={fileUpload ? URL.createObjectURL(fileUpload) : ''} alt="Preview" className="h-[167px] object-contain w-full rounded-md"/>
+              <Image src={fileUpload ? URL.createObjectURL(fileUpload) : ''} alt="Preview" width={0} height={167}  className="h-[167px] object-contain w-full rounded-md"/>
               ) : (
                 <div
                   onClick={() => {

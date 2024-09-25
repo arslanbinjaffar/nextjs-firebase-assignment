@@ -29,7 +29,7 @@ export const storage = getStorage(app);
 export default db;
 
 
-export const uploadImage = async (file:any) => {
+export const uploadImage = async (file:File) => {
     const imageRef = ref(storage, `postImages/${file.name + v4()}`);
     try {
       await uploadBytes(imageRef, file);

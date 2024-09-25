@@ -4,43 +4,31 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import Input from "@mui/material/Input";
-import { styled } from "@mui/material/styles";
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import { CardMedia } from "@mui/material";
-const VisuallyHiddenInput = styled("input")({
-  clip: "rect(0 0 0 0)",
-  clipPath: "inset(50%)",
-  height: 1,
-  overflow: "hidden",
-  position: "absolute",
-  bottom: 0,
-  left: 0,
-  whiteSpace: "nowrap",
-  width: 1,
-});
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 699,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  borderRadius: 5,
-};
+
 
 export default function DetailModal({
   open,
-    setOpen,
+  setOpen,
   image
 }: {
   open: boolean;
-        setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   image:string
 }) {
   const handleClose = () => setOpen(false);
-
+  
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 699,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    borderRadius: 5,
+  };
   return (
     <div>
       <Modal

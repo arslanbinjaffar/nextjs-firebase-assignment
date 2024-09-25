@@ -35,7 +35,7 @@ const AllCheckins = () => {
             }
         } 
         getData()
-    }, [])
+    }, [collectionRef])
     return (
       <>
       <div className='pt-5 px-11'>
@@ -53,7 +53,7 @@ const AllCheckins = () => {
         <div className='py-6 grid gap-8 md:grid-cols-4 sm:grid-cols-2 grid-cols-1 place-items-center'>
                     {data?.map((item) => {
                         return (
-                            <SingleAllCheckIn {...item} />
+                            <SingleAllCheckIn {...item} key={`${item.id+item.title}`}/>
                 )
             })}
           </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 
 const Hero = ({setIsShowAddModal}:{setIsShowAddModal: React.Dispatch<React.SetStateAction<boolean>>}) => {
   return (
