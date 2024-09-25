@@ -2,21 +2,17 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-// import Button from '@mui/material/Button';
-import Typography from "@mui/material/Typography";
 import { Avatar, Button } from "@mui/material";
 import DetailModal from "./DetailModal";
 import { Data } from "../page";
 import moment from "moment";
 
-export default function SingleAllCheckIn({image,title,createAt}:Data) {
+export default function SingleAllCheckIn({ image, title, createAt }: Data) {
   const [isShowDetail, SetIsShowDetail] = React.useState(false);
   return (
     <div>
       <div onClick={() => SetIsShowDetail(true)} className="cursor-pointer">
-        <Card
-          className="px-5 py-6 bg-white w-80 max-h-fit rounded-lg relative single-checkin-card shadow-shadow1"
-        >
+        <Card className="px-5 py-6 bg-white w-80 max-h-fit rounded-lg relative single-checkin-card shadow-shadow1">
           <CardMedia
             className="rounded-xl "
             sx={{ height: 160, width: 270 }}
@@ -27,28 +23,14 @@ export default function SingleAllCheckIn({image,title,createAt}:Data) {
             image={image}
             title="green iguana"
           />
-          <Button
-            size="large"
-            className="rounded-full bg-primaryPurple text-white capitalize absolute top-10 right-8 px-2.5 py-1.5"
-          >
+          <button className="rounded-full bg-primaryPurple text-white capitalize absolute top-10 right-8 px-2.5 py-1.5">
             Checked In
-          </Button>
+          </button>
           <CardContent className="px-0 pt-3" style={{ paddingBottom: 0 }}>
-            <Typography
-              gutterBottom
-              variant="h5"
-              component="div"
-              className="text-xl"
-            >
-             {title}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ color: "text.secondary" }}
-              className="text-base text-primaryGray"
-            >
-             {moment(createAt).format('Do MMM, YYYY')}
-            </Typography>
+            <h5 className="text-xl">{title}</h5>
+            <p className="text-base text-primaryGray">
+              {moment(createAt).format("Do MMM, YYYY")}
+            </p>
             <div className="flex gap-2.5 items-center pt-1.5">
               <Avatar
                 src="/Avatar.png"
@@ -64,7 +46,11 @@ export default function SingleAllCheckIn({image,title,createAt}:Data) {
         </Card>
       </div>
 
-          <DetailModal open={isShowDetail} setOpen={SetIsShowDetail} image={image} />
+      <DetailModal
+        open={isShowDetail}
+        setOpen={SetIsShowDetail}
+        image={image}
+      />
     </div>
   );
 }

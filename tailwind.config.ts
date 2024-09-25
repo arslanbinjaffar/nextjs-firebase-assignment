@@ -13,17 +13,14 @@ const config: Config = {
         foreground: "var(--foreground)",
         primaryGray: "var(--primary-gray)",
         primaryGray2: "var(--primary-gray-2)",
-        secondaryGray:"var(--secondary-gray)",
-        primaryPurple:"var(--primary-purple)"
+        secondaryGray: "var(--secondary-gray)",
+        primaryPurple: "var(--primary-purple)",
       },
       boxShadow: {
         shadow1: "var(--shadow-1)",
-        shadow2:"var(--shadow-2)"
+        shadow2: "var(--shadow-2)",
       },
-      borderColor: {
-        
-      },
-      
+      borderColor: {},
     },
   },
   plugins: [],
